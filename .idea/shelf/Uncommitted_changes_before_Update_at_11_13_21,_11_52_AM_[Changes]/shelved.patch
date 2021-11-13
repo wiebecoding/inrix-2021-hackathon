@@ -1,0 +1,19 @@
+Index: config.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//Code from https://github.com/INRIX/iq-api-samples/blob/master/api/config.js\nlet config = {};\n\nconfig.appId = \"f6rmtcl05k\";\nconfig.hashToken = \"ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm\";\nconfig.authTokenUrl = \"https://api.iq.inrix.com/auth/v1/appToken\";\nconfig.segmentSpeedUrl = \"https://api.iq.inrix.com/v1/segments/speed\";\nmodule.exports = config;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.js b/config.js
+--- a/config.js	(revision dc46597434b2845b14e6f01eb1c504210ff393d5)
++++ b/config.js	(date 1636833004064)
+@@ -5,4 +5,5 @@
+ config.hashToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
+ config.authTokenUrl = "https://api.iq.inrix.com/auth/v1/appToken";
+ config.segmentSpeedUrl = "https://api.iq.inrix.com/v1/segments/speed";
++
+ module.exports = config;
+\ No newline at end of file
+diff --git a/speed.js b/speed.js
+new file mode 100644

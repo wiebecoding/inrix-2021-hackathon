@@ -1,0 +1,47 @@
+Index: main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>function createLink(){\n    var url = \"https://segment-api.inrix.com/v1/segments/speed?\"\n    //var appToken = getAppToken();\n    var boxData = \"[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]\";\n    \n    return url;\n}\n\nvar data;\nvar token;\nfunction getAppToken(){\n    var appId = \"f6rmtcl05k\"\n    var appKey = \"6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f\";\n    var hashToken = \"ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm\";\n    var url = \"https://api.iq.inrix.com/auth/v1/appToken?appId=\"+appId+\"&hashToken=\"+hashToken;\n    data = fetchData(url);\n    setTimeout(function(){token = data.result.token},500);\n    return token;\n}\n\nasync function fetchData(url) {\n    let response = await fetch(url);\n    data = await response.json();\n    return data;\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.js b/main.js
+--- a/main.js	
++++ b/main.js	
+@@ -1,26 +1,25 @@
+ function createLink(){
+     var url = "https://segment-api.inrix.com/v1/segments/speed?"
+-    //var appToken = getAppToken();
++    var appToken = getAppToken();
+     var boxData = "[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]";
+     
+     return url;
+ }
+ 
+-var data;
+-var token;
++
+ function getAppToken(){
+     var appId = "f6rmtcl05k"
+     var appKey = "6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f";
+     var hashToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
+-    var url = "https://api.iq.inrix.com/auth/v1/appToken?appId="+appId+"&hashToken="+hashToken;
+-    data = fetchData(url);
+-    setTimeout(function(){token = data.result.token},500);
+-    return token;
++    var url = "https://segment-api.inrix.com/auth/v1/appToken?appId="+appId+"&hashToken="+hashToken;
++    console.log(url);
++    
++    return response;
+ }
+ 
+-async function fetchData(url) {
++async function fetchData() {
+     let response = await fetch(url);
+-    data = await response.json();
++    let data = await response.text();
+     return data;
+ }
+ 
+diff --git a/speed.js b/speed.js
+new file mode 100644
