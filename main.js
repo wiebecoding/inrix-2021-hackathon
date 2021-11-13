@@ -1,0 +1,20 @@
+function createLink(){
+    var url = "https://segment-api.inrix.com/v1/segments/speed?"
+    var boxData = "[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]";
+    return url;
+}
+
+
+/*
+
+
+function getAppToken(){
+    var appID = "f6rmtcl05k"
+    var appKey = "6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f";
+    var haskToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
+    var link = "https://uas-api.inrix.com/v1/appToken?appId="+appId+"&hashToken="+hashToken;
+    console.log(link);
+    const response = await fetch(url);
+    const data = await response;
+    return response;
+}*/
