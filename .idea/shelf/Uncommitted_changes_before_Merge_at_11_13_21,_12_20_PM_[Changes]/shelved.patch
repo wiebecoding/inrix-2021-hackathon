@@ -1,0 +1,21 @@
+Index: main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>function createLink(){\n    var url = \"https://segment-api.inrix.com/v1/segments/speed?\"\n    var boxData = \"[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]\";\n    return url;\n}\n\n\n/*\n\n\nfunction getAppToken(){\n    var appID = \"f6rmtcl05k\"\n    var appKey = \"6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f\";\n    var haskToken = \"ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm\";\n    var link = \"https://uas-api.inrix.com/v1/appToken?appId=\"+appId+\"&hashToken=\"+hashToken;\n    console.log(link);\n    const response = await fetch(url);\n    const data = await response;\n    return response;\n}*/\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.js b/main.js
+--- a/main.js	(revision b47e4ba8257d2d3cfcd167ecd4745d357543e839)
++++ b/main.js	(date 1636833804436)
+@@ -6,8 +6,6 @@
+ 
+ 
+ /*
+-
+-
+ function getAppToken(){
+     var appID = "f6rmtcl05k"
+     var appKey = "6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f";
+diff --git a/speed.js b/speed.js
+new file mode 100644

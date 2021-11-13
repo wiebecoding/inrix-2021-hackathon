@@ -1,0 +1,47 @@
+Index: main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>function createLink(){\n    var url = \"https://segment-api.inrix.com/v1/segments/speed?\"\n    var appToken = getAppToken();\n    var boxData = \"[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]\";\n    \n    return url;\n}\n\n\nfunction getAppToken(){\n    var appID = \"f6rmtcl05k\"\n    var appKey = \"6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f\";\n    var hashToken = \"ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm\";\n    var url = \"https://segment-api.inrix.com/auth/v1/appToken?appId=\"+appId+\"&hashToken=\"+hashToken;\n    console.log(url);\n    \n    return response;\n}\n\nasync function fetchData() {\n    let response = await fetch(url);\n    let data = await response.text();\n    return data;\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.js b/main.js
+--- a/main.js	(revision f003ae30a08af7a41a705bfb5c429e96da694a28)
++++ b/main.js	(date 1636834873234)
+@@ -1,25 +1,20 @@
+ function createLink(){
+     var url = "https://segment-api.inrix.com/v1/segments/speed?"
+-    var appToken = getAppToken();
+     var boxData = "[37.858,-122.541], [37.858,-122.341], [37.699,-122.341], [37.699,-122.541]";
+-    
+     return url;
+ }
+ 
+ 
++/*
++
++
+ function getAppToken(){
+     var appID = "f6rmtcl05k"
+     var appKey = "6aNy3v3kluaoKpUBAgbOTs1vapUjItX60MQYcy8f";
+-    var hashToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
+-    var url = "https://segment-api.inrix.com/auth/v1/appToken?appId="+appId+"&hashToken="+hashToken;
+-    console.log(url);
+-    
++    var haskToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
++    var link = "https://uas-api.inrix.com/v1/appToken?appId="+appId+"&hashToken="+hashToken;
++    console.log(link);
++    const response = await fetch(url);
++    const data = await response;
+     return response;
+-}
+-
+-async function fetchData() {
+-    let response = await fetch(url);
+-    let data = await response.text();
+-    return data;
+-}
+-
++}*/
+diff --git a/speed.js b/speed.js
+new file mode 100644
