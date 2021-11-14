@@ -2,7 +2,7 @@
   "name": "inrix-2021-hackathon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wiebecoding.github.io/inrix-2021-hackathon",
+  "homepage": "https://wiebecoding.github.io/inrix-2021-hackathon/",
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
     "@testing-library/jest-dom": "^5.15.0",

@@ -2,20 +2,22 @@ import React , {useEffect, useState} from 'react';
 
 import GoogleMapReact from 'google-map-react';
 import SpeedPoint from "./SpeedPoint";
-function Map(){
+function Map(props){
     const [points, setPoints] = useState([]);
     const [zoom, setZoom] = useState(1);
 
     useEffect(() => {
         async function main() {
+            const params = new URLSearchParams(window.location.search);
+            let mult = 5;
+            mult = parseInt(params.get("scale"))
             let temp = [];
             //let arr = [[45463462, "EL CAMINO REAL", [37.34988587105891,-121.93534355137554], 34.5, 22, false]];
             //console.log(arr)
             let apiData = await getAPIData()
             let sfData = await getRAWData()
             let arr = ridofUnique(apiData[0], apiData[1], apiData[2], sfData[0], sfData[1], sfData[2])
-            console.log(arr)
-            let mult = 5;
+
             for (let i = 0; i < arr.length-mult; i+=mult) {
                 if(!isNaN(arr[i][2][1]) && !isNaN(arr[i][2][0]) && !isNaN(arr[i][3])) {
                     let speeding = arr[i][5]
@@ -36,20 +38,7 @@ function Map(){
         }
         main()
     }, []);
-    /*useEffect(async () => {
-       /!*let arr = []
-        let apiData = await getAPIData()
-        let sfData = await getRAWData()
-        arr = ridofUnique(apiData[0],apiData[1],apiData[2],sfData[0],sfData[1],sfData[2])
-        let temp = []
-        for (let i = 0; i < 10; i++) {
-            console.log('checked '+ arr[i][2][0])
-            points.push({lat: arr[i][2][0], lng: arr[i][2][1], street: arr[i][1], speed: arr[i][3],speeding: arr[i][5]})
-            temp.push({lat: arr[i][2][0], lng: arr[i][2][1], street: arr[i][1], speed: arr[i][3],speeding: arr[i][5]})
-        }*!/
-        setPoints([[45463462, "EL CAMINO REAL", [37.34988587105891,-121.93534355137554], 34.5, 22, false]])
-    }, []);*/
-
+    
     const defaultProps = {
         center: {
             lat: 37.75,

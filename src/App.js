@@ -1,15 +1,15 @@
 import './App.css';
 import Map from "./Map"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import {BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
       <div className="App">
-          <Router>
+          <HashRouter basename={'/'}>
               <Routes>
-                  <Route exact path="/" element={<Map/>}/>
+                  <Route  path="/" exact element={<Map/>}/>
               </Routes>
-          </Router>
+          </HashRouter>
       </div>
   )
 }
