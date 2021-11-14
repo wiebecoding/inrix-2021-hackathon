@@ -9,8 +9,9 @@ function Map(props){
     useEffect(() => {
         async function main() {
             const params = new URLSearchParams(window.location.search);
-            let mult = 5;
-            mult = parseInt(params.get("scale"))
+            let mult = 6;
+            if(params.get("scale") !== null)
+                mult = parseInt(params.get("scale"))
             let temp = [];
             //let arr = [[45463462, "EL CAMINO REAL", [37.34988587105891,-121.93534355137554], 34.5, 22, false]];
             //console.log(arr)
