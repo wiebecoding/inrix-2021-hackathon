@@ -1,0 +1,42 @@
+{
+  "name": "inrix-2021-hackathon",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://wiebecoding.github.io/inrix-2021-hackathon",
+  "dependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-leaflet": "^3.0.0",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "4.0.3",
+    "react-tooltip": "^4.2.21",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "google-map-react": "^2.1.10"
+  }
+}

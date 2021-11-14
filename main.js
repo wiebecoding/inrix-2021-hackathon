@@ -1,118 +1,117 @@
-async function getAPIData(){
-    let array 
-    let myHeaders = new Headers() 
-    myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6ImtubWs5dXhxemgiLCJ0b2tlbiI6eyJpdiI6IjU2NWMxZWNkOTRjMGVhNGQwNDgwYTBmYjI5ZWFkYjg5IiwiY29udGVudCI6IjQ4MDIyMzllMzhlZDhlYTBmNmEyYjE1ZDFjYTQ5ZmNmZDQ5MDZiNGRlZmNlOTkwNGRjNDJkZTYyMGM3ZGExOWYyOTg1YTcyM2M2NWU2YWQyNTg3NGY0ZTM0NjE2YjNmNjllOTU0YjBiNDA5M2JlZmVkZDRlZGQzZjEyMWNmMGJkYzYzNTdmNmYyOGUwNDJmNWU4MjUxOWI5NWZiMTFhOGNmOTEzYWM1YmJkOTgwNWIwYTNmMjdlNGJmOGI5Y2JmNzM5NjNiMmI0MDI5ZjdkZTkyMWIxNWI0ZTA1MWM3MTJiYmE4NGVjYjQ2NjA5Y2FkYWYyM2MxNDRhMTVjNzRhZDRiYWZkMzg5OTgwZjM5NGFmODJiY2RlOWIxMDdjZjQ0NjcwNWVjMDZmNWE1MDQ2OTM0MWQwZDU4MjBmMTJiMzQ3MjNkZDdlOTVhYWRkOWFkZjkzZGFmMzBmMWI2ZTczMzY1ZjZiMjU4MzFjZTYzZGNhMDAzY2I4MGFhNmE1MGVlYzE5NGRiOGJhNjJhZjQ2MzQwZTQxNjI2M2Q0N2QzNGQ0Yjk0NDZhMTFhYjI4NzcyOTRkOTA3NWFmZDdmNTc2N2JkOTE3Njc2YjI5MzIyZWZjYmNkYzlmNjNjNzFlNTEwZDdlMTg5N2MxYWUxOTViZjA2ODg3Mzc2MmVmZmUwMjBjMmU0NDUxNTUwODU0MWYzY2E1M2U0ZGY0N2EyYzM5NTk3MGVjNDdmMGE1ODMwMjVlNTIzOTg0YjkxYzYxYmI3NTRjZmQ0ZDc1YzNhNmZiOTkwZWRlOTFjMmRjYjhhZWY1YWJhMDE5ZDM2YWM1Yzg2YTIyNzVkZjYxNTRiZDNhZDkxNTcxYTE0ZmRkZmY5YjljZGJlMGEyIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiI1NjVjMWVjZDk0YzBlYTRkMDQ4MGEwZmIyOWVhZGI4OSIsImNvbnRlbnQiOiI1ODE0NWFiZjY4Zjk4MGYwODhmZWIzNWMyN2E4YTBjNmYwYmUxMDdkZDZlMmIyNWFmMjRlZGY2ZDdkNjY4NWFiM2E5NGQ5N2I4MTZjNjJmYzAwM2RmNWRkIn0sImp0aSI6IjlkMmM2NmVjLTkzY2QtNDE5NS1hMjMzLWFiNjg2YjFkODUzOCIsImlhdCI6MTYzNjg2NDI3MiwiZXhwIjoxNjM2ODY3ODcyfQ.qj_k_d6a85rfOjkeYoLVtNVeBhF2SpvAZFBuqB9wp7c") 
-    let requestOptions = {
+var data;
+    async function getAPIData(){
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6ImtubWs5dXhxemgiLCJ0b2tlbiI6eyJpdiI6ImE2NzEwNzcyN2FhZGU3OTM3NWNjMTIwZDIxYjg0NTFiIiwiY29udGVudCI6ImRhMDZiMGFiOGUyNmM3NDc4NmZlMWZkNmFhOGIwNTdhY2E2ZDM2OTdiNGEzMjQwODcwYmQxMGUxMDAxMmRiODAxZTNmMjQxN2FlODU3OGJiZDQyOGRkNTMwZDg1Y2NhNTZhOGI1MzMyYTkyNDc0MDE5ZmVjZDZkYjhlZTBlYzUyMmJiMDViZGY2MWMwODgyMWZiNmI4ODJkN2M0YjNiZWM4OTY1MjgzMzJlNDI5MTU0ZTUyZGQwYTczYTIyOGI2ZWQ3MmNmNmE1NGM5YjYyODM3NDcwMmU4Yzg5OWJhNDgwNWViMDc1ZTJiNzM0NzkxZWI4N2NkMzRjZmQyOTE0MGRlNmUxMzg3NDA1YzAwODA5ZWIzMjNiN2EyZGZhYmFjMGFlNDA2ZmI5MzY5YTc4YzE3ZjdiMzAwZjU1NzRlMTBhMzE5ZDRlZTFhMzZlNzYxMDE3MDk4NTEzY2RkZDliMGNkYTdiMTk4M2RlMGUzYjNiOGM0ODBhMjZkOWE1ZTU0ZTFkYTM3NDNmYzRiYzZjYTgwZDFkY2RjMDU1Yzg0ZDMwMTgzYTRkMmU3YTgzYmI4MmFlNTExMTU3NWU0ZWQ0ZGQ5ZmUzYTMzMTA5MDU2M2UzODIwMTcxY2IxOTJlZjkyMWUxODRmNWUzOTBlOGU2ZWExYzE5MDVhOWM0MTc3YjkzMDgwN2Q2M2YwZTU2ODJkODE3YWJlYjE1ZDEwNzQyN2UwZGZlMWY1N2QxY2JkNzZjNTQ0YzA5OGQyMmQ1Mzc3NjVjYTY2ZTk4YzdkMzc4NzhkYTdmZjRiYjk1ZmM3Njc5OTVkYjk4MzUzNjU3MWQ5ZTU4NWMyMzYxMGM0NTRiNGVmZTFkNGVmYTRlYmFkMzY3NWExZDNkIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiJhNjcxMDc3MjdhYWRlNzkzNzVjYzEyMGQyMWI4NDUxYiIsImNvbnRlbnQiOiI4NjNlOTg5NWI1MmFmMzQ5OThkMDA2ZDJiYjlkMzYyY2QyNjgxN2IwOTBmNDFjNWE3ZmNjMTM4ZTEwMmQ5Y2Y1MTE1NjI1MTdjNThjMzFiYjhhM2ZmNjZkIn0sImp0aSI6ImE5ZTdhNDAxLTBlOGUtNGQwYi05MzQ1LWNiNjI2N2JlZWQ5MCIsImlhdCI6MTYzNjg1NTM0OSwiZXhwIjoxNjM2ODU4OTQ5fQ.LXHPjocuJvomLbX6k4OVf1qGzeROQbkhe7drK-sCSLc");
+
+        var requestOptions = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
-    } 
-    await fetch("https://api.iq.inrix.com/v1/segments/speed?box=37.858%7C-122.541,37.699%7C-122.341", requestOptions)
-    .then(response => response.text())
-    .then(response => {
-        array = parseAPIData(response) 
-    })
-    .catch(error => console.log('error', error)) 
-    return array 
-}
+        };
 
-async function getAppToken(){
-    let tokenData 
-    let appId = "f6rmtcl05k"
-    let hashToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm" 
-    let url = "https://api.iq.inrix.com/auth/v1/appToken?appId="+appId+"&hashToken="+hashToken 
-    tokenData = await fetchToken(url) 
-    let token = tokenData.result.token 
-    return token 
-}
-
-async function fetchToken(url) {
-    let response = await fetch(url) 
-    return await response.json() 
-}
-
-async function getRAWData(){
-    let array = [] 
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-      
-      await fetch("https://raw.githubusercontent.com/wiebecoding/inrix-2021-hackathon/main/san_fran_segments.json", requestOptions)
+        fetch("https://api.iq.inrix.com/v1/segments/speed?box=37.858%7C-122.541,37.699%7C-122.341", requestOptions)
         .then(response => response.text())
-        .then(response => {
-            array = parseRAWData(response)
-        })
+        .then(result => parseAPIData(result))
         .catch(error => console.log('error', error));
-        return array;
+    }
+    getAPIData();
+
+    async function getAppToken(){
+        var tokenData;
+        var appId = "f6rmtcl05k"
+        var hashToken = "ZjZybXRjbDA1a3w2YU55M3Yza2x1YW9LcFVCQWdiT1RzMXZhcFVqSXRYNjBNUVljeThm";
+        var url = "https://api.iq.inrix.com/auth/v1/appToken?appId="+appId+"&hashToken="+hashToken;
+        tokenData = await fetchToken(url);
+        var token = tokenData.result.token;
+        return token;
     }
 
-async function parseRAWData(data){
-    let codeRAWArray = [] 
-    let nameRAWArray = [] 
-    let coordRAWArray = [] 
-    let test = JSON.parse(data) 
-    let json = test.result.segments 
-    console.log(json)
-    for(let lengthCounter = 0; lengthCounter < json.length; lengthCounter++){
-        codeRAWArray.push(json[lengthCounter].code) 
-        nameRAWArray.push(json[lengthCounter].roadInfo.name) 
-        coordRAWArray.push(json[lengthCounter].locationInfo.center.coordinates) 
+    async function fetchToken(url) {
+        let response = await fetch(url);
+        return await response.json();
     }
-    return[codeRAWArray,nameRAWArray,coordRAWArray] 
-}
 
-async function main(){
-    let totalArr 
-    let apiData = await getAPIData() 
-    let sfData = await getRAWData() 
-    console.log(apiData)
-    console.log(sfData)
-    totalArr = ridofUnique(apiData[0],apiData[1],apiData[2],sfData[0],sfData[1],sfData[2])
-    console.log(totalArr)
-}
+    var length = 0;
 
-async function parseAPIData(data){
-    let codeAPIArray = [] 
-    let currentSpeedAPIArray = [] 
-    let averageSpeedAPIArray = [] 
-    let test = JSON.parse(data) 
-    let json = test.result.segmentspeeds[0].segments 
-    for(let lengthCounter = 0; lengthCounter < json.length; lengthCounter++){
-        currentSpeedAPIArray.push(json[lengthCounter].speed) 
-        averageSpeedAPIArray.push(json[lengthCounter].average) 
-        codeAPIArray.push(json[lengthCounter].code) 
-    }
-    return[codeAPIArray,currentSpeedAPIArray,averageSpeedAPIArray] 
-}
-
-function ridofUnique(apiCodeArray, currentSpeedArray, averageSpeedArray, sfCodeArray, sfNameArray, sfcoordArray){
-    let overallArray = []
-    let counter = 0 
-    let high = 0 
-    for(let i = 0; i < apiCodeArray.length; i++){
-        for(let j = 0; j < sfCodeArray.length; j++){
-            if((apiCodeArray[i] == sfCodeArray[j]) && sfNameArray[j] != null && sfcoordArray[j] != null)
+    async function getRAWData(url){
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", url, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
             {
-                let miniArray = [] 
-                miniArray.push(apiCodeArray[i]) 
-                miniArray.push(sfNameArray[j]) 
-                miniArray.push(sfcoordArray[j]) 
-                miniArray.push(currentSpeedArray[i]) 
-                if(currentSpeedArray[i] > high){
-                    high = currentSpeedArray[i] 
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    parseRAWData(allText);
                 }
-                miniArray.push(averageSpeedArray[i]) 
-                if(currentSpeedArray[i]>=(averageSpeedArray[i]*1.10)|| currentSpeedArray[i]>= (65*1.10)){
-                    miniArray.push(true) 
-                    counter +=1 
-                }else{
-                    miniArray.push(false) 
-                }
-                //console.log("Speed: "+ currentSpeedAPIArray[i] +" Average: "+ averageSpeedAPIArray[i] + " Differential: " + (currentSpeedArray[i]/averageSpeedArray[i])+ " Speeding: "+ miniArray[5]) 
-                overallArray.push(miniArray) 
             }
         }
+        rawFile.send(null);
     }
-    return overallArray 
-}
+    var codeRAWArray = [];
+    var nameRAWArray = [];
+    var coordRAWArray = [];
+    var lengthRAW = 0;
+    async function parseRAWData(data){
+        var test = JSON.parse(data);
+        var json = test.result.segments;
+        lengthRAW = json.length;
+        for(var lengthCounter = 0; lengthCounter < json.length; lengthCounter++){
+            codeRAWArray.push(json[lengthCounter].code);
+            nameRAWArray.push(json[lengthCounter].roadInfo.name);
+            coordRAWArray.push(json[lengthCounter].locationInfo.center.coordinates);
+        }
+    }
+    getRAWData("/san_fran_segments.json");
+
+    var codeAPIArray = [];
+    var currentSpeedAPIArray = [];
+    var averageSpeedAPIArray = [];
+    var lengthAPI = 0;
+    async function parseAPIData(data){
+        var test = JSON.parse(data);
+        var json = test.result.segmentspeeds[0].segments;
+        lengthAPI = json.length;
+        for(var lengthCounter = 0; lengthCounter < json.length; lengthCounter++){
+            currentSpeedAPIArray.push(json[lengthCounter].speed);
+            averageSpeedAPIArray.push(json[lengthCounter].average);
+            codeAPIArray.push(json[lengthCounter].code);
+        }
+        ridofUnique(codeAPIArray,currentSpeedAPIArray,averageSpeedAPIArray,codeRAWArray,nameRAWArray,coordRAWArray);
+    }
+    function strcmp(a, b) {
+        if (a.toString() < b.toString()) return -1;
+        if (a.toString() > b.toString()) return 1;
+        return 0;
+    }
+    var overallArray = [];
+    function ridofUnique(apiCodeArray, currentSpeedArray, averageSpeedArray, sfCodeArray, sfNameArray, sfcoordArray){
+        var counter = 0;
+        var high = 0;
+        for(var i = 0; i < apiCodeArray.length; i++){
+            for(var j = 0; j < sfCodeArray.length; j++){
+                if((apiCodeArray[i] == sfCodeArray[j]) && sfNameArray[j] != null && sfcoordArray[j] != null)
+                {
+                    var miniArray = [];
+                    miniArray.push(apiCodeArray[i]);
+                    miniArray.push(sfNameArray[j]);
+                    miniArray.push(sfcoordArray[j]);
+                    miniArray.push(currentSpeedAPIArray[i]);
+                    if(currentSpeedAPIArray[i] > high){
+                        high = currentSpeedAPIArray[i];
+                    }
+                    miniArray.push(averageSpeedAPIArray[i]);
+                    if(currentSpeedArray[i]>=(averageSpeedArray[i]*1.10)|| currentSpeedArray[i]>= (65*1.10)){
+                        miniArray.push(true);
+                        counter +=1;
+                    }else{
+                        miniArray.push(false);
+                    }
+                    console.log("Speed: "+ currentSpeedAPIArray[i] +" Average: "+ averageSpeedAPIArray[i] + " Differential: " + (currentSpeedArray[i]/averageSpeedArray[i])+ " Speeding: "+ miniArray[5]);
+                    overallArray.push(miniArray);
+                }
+            }
+        }
+        return overallArray
+    }
