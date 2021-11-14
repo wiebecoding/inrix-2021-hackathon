@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/inrix-2021-hackathon/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/inrix-2021-hackathon/static/js/main.ff37dbb4.chunk.js",
+    "main.js.map": "/inrix-2021-hackathon/static/js/main.ff37dbb4.chunk.js.map",
+    "runtime-main.js": "/inrix-2021-hackathon/static/js/runtime-main.3fa92a38.js",
+    "runtime-main.js.map": "/inrix-2021-hackathon/static/js/runtime-main.3fa92a38.js.map",
+    "static/js/2.87a30ad6.chunk.js": "/inrix-2021-hackathon/static/js/2.87a30ad6.chunk.js",
+    "static/js/2.87a30ad6.chunk.js.map": "/inrix-2021-hackathon/static/js/2.87a30ad6.chunk.js.map",
+    "static/js/3.c653d229.chunk.js": "/inrix-2021-hackathon/static/js/3.c653d229.chunk.js",
+    "static/js/3.c653d229.chunk.js.map": "/inrix-2021-hackathon/static/js/3.c653d229.chunk.js.map",
+    "index.html": "/inrix-2021-hackathon/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/inrix-2021-hackathon/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.87a30ad6.chunk.js.LICENSE.txt": "/inrix-2021-hackathon/static/js/2.87a30ad6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fa92a38.js",
+    "static/js/2.87a30ad6.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.ff37dbb4.chunk.js"
+  ]
+}
